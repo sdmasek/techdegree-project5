@@ -1,11 +1,26 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-rows: .5fr 1.5fr;
+    grid-template-areas:
+        "header"
+        "container";
+    
+}
+
+header{
+    grid-area: header;
+}
+
+main{
+    grid-area: container;
+    margin: 0 auto;
 }
 
 h1{
     position: absolute;
     font-size: 4rem;
-    top: 300px;
+    top: 15rem;
     float: right;
 }
 
@@ -17,7 +32,7 @@ h1, figcaption {
 figcaption{
     position: absolute;
     font-size: 2rem;
-    top: 450px;
+    top: 25rem;
     
 }
 
@@ -34,8 +49,23 @@ figure{
 }
 
 label{
-    font-size: 2rem;
-    
+    font-size: 1rem;
+    text-align: right;
+    margin: 5px;
+    padding: 5px;
+}
+
+input[placeholder]{
+    font-style: italic;
+}
+
+.search-bar{
+    display: flex;
+    margin: 3rem;
+}
+
+input[type="search"],label{
+    flex-basis: 33%;
 }
 
 .gallery img{
@@ -43,16 +73,57 @@ label{
     width: 250px;
 }
 
-.container{
-    display: grid;
-    grid-template-columns: 500px;
-    grid-template-rows: 1fr 1fr;
-}
 
 .gallery{
-    width: 1000px;
     display: grid;
-    grid-template-columns: repeat(4, minmax(250px, 1fr));
-    grid-template-rows: repeat(3,minmax(250px, 1fr));
+    grid-template-columns: repeat(4, .1fr);
+    grid-template-rows: repeat(3, .1fr);
     grid-gap: 20px;
+}
+
+@media screen and (max-width: 1070px){
+    .gallery{
+        grid-template-columns: repeat(3, .1fr);
+        grid-template-rows: repeat(5, .1fr);
+    }
+}
+@media screen and (max-width: 769px){
+
+    h1{
+        top: 3rem;
+        
+    }
+
+    figcaption{
+       top: 15rem;
+    }
+    .gallery{
+        grid-template-columns: repeat(2, .1fr);
+        grid-template-rows: repeat(4, .1fr);
+    }
+
+}
+@media screen and (max-width: 320px){
+
+    #banner-img{
+        height: 50vh;
+    }
+    h1{
+        top: 3rem;
+        font-size: 2rem
+        
+    }
+
+    figcaption{
+       top: 10rem;
+       font-size: 1rem;
+    }
+    .gallery{
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+    }
+
+    a{
+        margin: auto;
+    }
 }
