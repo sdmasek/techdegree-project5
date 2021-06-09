@@ -4,19 +4,20 @@ baguetteBox.run('.gallery');
 
 
 function searchGallery() {
-    let input = document.getElementById("search").value;
-    let inputLowerCase = input.toLowerCase();
-    let photos = document.getElementsByClassName("photos");
-    let caption = document.getElementsByTagName("a").getAttribute("data-caption");
 
-    for (i = 0; i < photos.length; i++) {
+    let photos = document.getElementsByTagName("a");
 
-        if (!photos[i].innerHTML.toLowerCase().includes(inputLowerCase)) {
-            caption.style.display = "none";
+    for (let i = 0; i < photos.length; i++) {
+        let input = document.getElementById("search").value.toLowerCase();
+        let caption = photos[i].getAttribute("data-caption");
+        // console.log(caption);
+        if (input.includes(caption)) {
+            // console.log(caption);
+            photos[i].style.display = "block";
         }
         else {
-            caption.style.display = "list-item";
+            photos[i].style.display = "none";
+            // console.log("no caption available");
         }
     }
-
 }
